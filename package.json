@@ -1,19 +1,29 @@
 {
   "name": "purdys-cli",
-  "version": "1.0.0",
   "description": "",
-  "main": "lib.js",
-  "type": "module",
-  "scripts": {
-    "start": "./index.js",
-    "no-bars": "node index | grep -Ev '\\bBar\\b'",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "bin": "index.js",
+  "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com>",
-  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/pdehaan/purdys-cli/issues"
+  },
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.0",
     "cheerio": "^1.0.0-rc.12"
-  }
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/pdehaan/purdys-cli#readme",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "main": "lib.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/purdys-cli.git"
+  },
+  "scripts": {
+    "no-bars": "node index | grep -Ev '\\bBar\\b'",
+    "start": "./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module"
 }
