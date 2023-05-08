@@ -1,9 +1,12 @@
 {
   "name": "purdys-cli",
   "description": "",
-  "bin": "index.js",
   "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com>",
+  "bin": {
+    "purdys-cli": "index.js",
+    "no-bars": "index.js | grep -Ev '\\bBar\\b'"
+  },
   "bugs": {
     "url": "https://github.com/pdehaan/purdys-cli/issues"
   },
