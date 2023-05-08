@@ -2,7 +2,9 @@
 
 import * as lib from "./lib.js";
 
-const products = await lib.fetchProducts();
+let hideBars = process.argv.includes("--hide-bars");
+
+const products = await lib.fetchProducts(hideBars);
 for (const p of products) {
   let str = `[${p.price}] ${p.name}`;
   if (p.callOutPrice) {

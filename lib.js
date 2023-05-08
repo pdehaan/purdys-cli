@@ -1,13 +1,13 @@
 import * as cheerio from "cheerio";
 
-export async function fetchProducts() {
+export async function fetchProducts(hideBars = false) {
   let html = await fetch(
     "https://www.purdys.com/chocolate/vegan-chocolates#/pageSize:78/sort:final_price:desc"
   );
   html = await html.text();
   const $ = cheerio.load(html);
 
-  const $products = $("div.product-item-info .product-item-details")
+  let $products = $("div.product-item-info .product-item-details")
     .map(function () {
       const $details = $(this);
       const name = $details.find(".product-item-name").text().trim();
@@ -26,12 +26,18 @@ export async function fetchProducts() {
       };
     })
     .get();
-  return $products.sort((a, b) => {
-    const priceSort = b.priceAmount - a.priceAmount;
-    // If the prices are the same, sort by `name`.
-    if (priceSort === 0) {
-      return a.name.localeCompare(b.name);
-    }
-    return priceSort;
-  });
+
+  if (hideBars) {
+    $products = $products.filter(p => !/\bBar\b/.test(p.name));
+  }
+
+  return $products
+    .sort((a, b) => {
+      const priceSort = b.priceAmount - a.priceAmount;
+      // If the prices are the same, sort by `name`.
+      if (priceSort === 0) {
+        return a.name.localeCompare(b.name);
+      }
+      return priceSort;
+    });
 }

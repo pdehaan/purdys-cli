@@ -5,13 +5,12 @@
   "author": "Peter deHaan <peter@deseloper.com>",
   "bin": {
     "purdys-cli": "index.js",
-    "no-bars": "index.js | grep -Ev '\\bBar\\b'"
+    "no-bars": "index.js --hide-bars"
   },
   "bugs": {
     "url": "https://github.com/pdehaan/purdys-cli/issues"
   },
   "dependencies": {
-    "@11ty/eleventy-fetch": "^4.0.0",
     "cheerio": "^1.0.0-rc.12"
   },
   "devDependencies": {},
@@ -24,7 +23,7 @@
     "url": "git+https://github.com/pdehaan/purdys-cli.git"
   },
   "scripts": {
-    "no-bars": "node index | grep -Ev '\\bBar\\b'",
+    "no-bars": "./index.js --hide-bars",
     "start": "./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
